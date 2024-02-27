@@ -19,7 +19,7 @@
     </head>
     <body>
       <div class= "container">
-     <h1 class="text-center mt-2 mb-4"> Haribaksh careers</h1>
+     <h1 class="text-center mt-2 mb-4"> {{company_name}} careers</h1>
       <img class="img-fluid" id="banner" src="https://b97df2ea-47ef-494d-a1a9-e43c29860bec-00-3n8nedzlv76ni.sisko.replit.dev/static/banner.jpg"height="320" >
       <h2 class="text-center mt-2 mb-4"> About Haribaksh</h2>
       <p class="lead">
@@ -27,7 +27,11 @@
       At Haribaksh Careers, our mission is to bridge the gap between skilled professionals and innovative IT companies, fostering mutually beneficial connections that drive success. We are dedicated to empowering individuals and organizations by facilitating meaningful career journeys and contributing to the growth of the IT industry.
       </p>
       <h2 class="text-center mt-2 mb-4">Open positions</h2>
-      <p>Show the job here</p>
+      <div>
+        {% for job in jobs %}
+       {% include 'jobitem.html' %}
+        {% endfor %}
+      </div>
         <div class="text-center"> 
           <button type="button" class="btn btn-outline-dark">Contact Us</button>
           <p class="mt-4">Copyright 2024,Haribaksh</p>
