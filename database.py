@@ -1,6 +1,7 @@
 import pymysql
+import os
 
-# Connect to the database using PyMySQL
+my_secret = os.environ['PASSWORD']
 def load_jobs_from_db():
   connection = pymysql.connect(
       charset="utf8mb4",
@@ -8,7 +9,9 @@ def load_jobs_from_db():
       cursorclass=pymysql.cursors.DictCursor,
       db="defaultdb",
       host="haribakshcareers-natraj-careers.a.aivencloud.com",
-      password="AVNS_1yapi6ol-2w_L7WvLpD",
+      password=my_secret,
+      
+    
       read_timeout=10,
       port=28698,
       user="avnadmin",
@@ -18,10 +21,9 @@ def load_jobs_from_db():
   with connection.cursor() as cursor:
       cursor.execute("SELECT * FROM jobs")
       job = cursor.fetchall()
-
-      # Convert the result to a list of dictionaries
       jobs = [dict(row) for row in job]
 
   connection.close()
 
   return jobs
+  
