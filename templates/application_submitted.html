@@ -1,33 +1,74 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Applicatiion Submitted</title>
-    {% include 'bootstrap.html' %}
-  </head>
-  <body>
-    {% include 'nav.html' %}
-    {% include 'banner.html' %}
-    <div class= "container">
-       <h1 class="text-center mt-2 mb-4"> Haribaksh careers</h1>
-      <p>Your application for the role of {{job['title']}} at Haribaksh has been submitted.</p>
-    <b>Full Name</b>
-    <div class="mb-2">{{application['full_name']}}</div>
-
-    <b>Email</b>
-    <div class="mb-2">{{application['email']}}</div>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Application Submitted</title>
+  {% include 'bootstrap.html' %}
+  <style>
+    body {
+      background: #e0e0e0; /* Light gray background for the page */
+      font-family: 'Roboto', sans-serif;
+    }
+    .container {
+      background: #ffffff; /* White background for the content area */
+      border-radius: 15px;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      margin-top: 50px;
+      max-width: 800px; /* Center the container */
+    }
+    h1 {
+      color: #2c3e50; /* Dark color for the heading */
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    p {
+      color: #7f8c8d; /* Light gray for the paragraph */
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+    }
+    .application-details {
+      background: #f5f5f5; /* Slightly metallic light background */
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .application-details b {
+      color: #333333; /* Dark color for labels */
+    }
+    .application-details div {
+      background: #ffffff; /* White background for values */
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 15px;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    a {
+      color: #6d6d6d; /* Metallic Chic color for links */
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  {% include 'nav.html' %}
+  {% include 'banner.html' %}
+  <div class="container">
+    <h1 class="text-center">Application Submitted</h1>
+    <p class="text-center">Your application for the role of <strong>{{job['title']}}</strong> at Haribaksh has been successfully submitted.</p>
     
-    <b>LinkedIn URL</b>
-    <div class="mb-2">{{application['linkedin_url']}}</div>
-    
-    <b>Education</b>
-    <div class="mb-2">{{application['education']}}</div>
-    
-    <b>Work Experience</b>
-    <div class="mb-2">{{application['work_experience']}}</div>
-    
-    <b>Resume URL</b>
-    <div class="mb-2">{{application['resume_url']}}</div>
+    <div class="application-details">
+      <div><b>Full Name</b>: {{application['full_name']}}</div>
+      <div><b>Email</b>: {{application['email']}}</div>
+      <div><b>LinkedIn URL</b>: <a href="{{application['linkedin_url']}}" target="_blank">{{application['linkedin_url']}}</a></div>
+      <div><b>Education</b>: {{application['education']}}</div>
+      <div><b>Work Experience</b>: {{application['work_experience']}}</div>
+      <div><b>Resume URL</b>: <a href="{{application['resume_url']}}" target="_blank">{{application['resume_url']}}</a></div>
     </div>
-    {% include 'footer.html' %}
-  </body>
+  </div>
+  {% include 'footer.html' %}
+</body>
 </html>

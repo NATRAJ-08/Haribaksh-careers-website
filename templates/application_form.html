@@ -1,34 +1,109 @@
-<h4>Application Form</h4>
-<form action="/job/{{job['id']}}/apply" method="post">
-  <div class="mb-2">
-  <label>Full Name</label><br>
-  <input type="text" required name="full_name" placeholder="Jatin Soni">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Application Form</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background: #f4f4f4; /* Light gray background for the whole page */
+      font-family: 'Roboto', sans-serif;
+    }
+    .container {
+      background: #ffffff; /* White background for the form */
+      border-radius: 20px;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+      padding: 40px;
+      margin-top: 50px;
+      max-width: 800px; /* Centering the form */
+    }
+    h4 {
+      color: #2c3e50; /* Dark color for the heading */
+      font-weight: 700;
+      margin-bottom: 30px;
+      border-bottom: 3px solid #bdc3c7; /* Underline effect */
+      padding-bottom: 15px;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+    .form-control {
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .form-control:focus {
+      border-color: #bdc3c7;
+      box-shadow: 0 0 0 0.2rem rgba(189, 195, 199, 0.25);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #bdc3c7, #2c3e50);
+      border: none;
+      color: #ffffff;
+      font-weight: 700;
+      padding: 12px 24px;
+      border-radius: 8px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
+    }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #2c3e50, #bdc3c7);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+      transform: translateY(-2px);
+    }
+    .form-group label {
+      color: #34495e;
+      font-weight: 600;
+    }
+    .form-group textarea {
+      resize: vertical;
+      height: 120px; /* Adjust height for better usability */
+    }
+    .form-control::placeholder {
+      color: #95a5a6; /* Placeholder text color */
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <h4 class="mb-4">Application Form</h4>
+    <form action="/job/{{job['id']}}/apply" method="post">
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" class="form-control" id="fullName" required name="full_name" placeholder="Jatin Soni">
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" required name="email" placeholder="jatine@soni.com">
+      </div>
+
+      <div class="form-group">
+        <label for="linkedinUrl">LinkedIn URL</label>
+        <input type="url" class="form-control" id="linkedinUrl" name="linkedin_url" placeholder="https://linkedin.com/in/jatinsoni">
+      </div>
+
+      <div class="form-group">
+        <label for="education">Education</label>
+        <textarea class="form-control" id="education" name="education" placeholder="Describe your education background"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="workExperience">Work Experience</label>
+        <textarea class="form-control" id="workExperience" name="work_experience" placeholder="Describe your work experience"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="resumeUrl">Resume URL</label>
+        <input type="url" class="form-control" id="resumeUrl" name="resume_url" placeholder="https://drive.google.com/your-resume">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Apply Now</button>
+    </form>
   </div>
 
-  <div class="mb-2">
-  <label>Email</label><br>
-  <input type="email" required name="email" placeholder="jatine@soni.com">
-  </div>
-
-  <div class="mb-2">
-  <label>LinkedIn URL</label><br>
-  <input type="url" name="linkedin_url" placeholder="https://linked.com/in/jatinsoni">
-  </div>
-
-  <div class="mb-2">
-    <label>Education</label><br>
-    <textarea name="education"></textarea>
-  </div>
-
-  <div class="mb-2">
-    <label>Work Experience</label><br>
-    <textarea name="work_experience"></textarea>
-  </div>
-
-  <div class="mb-2">
-  <label>Resume URL</label><br>
-  <input type="url" name="resume_url">
-  </div>
-
-  <input type="submit" >
-</form>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

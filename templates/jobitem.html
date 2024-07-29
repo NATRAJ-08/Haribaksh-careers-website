@@ -1,19 +1,42 @@
-<div class="border-bottom row" style="margin-bottom:16px;padding-bottom:8px;">
-<div class="col-10">
-  <h4 
-    style="color:rgb(120, 120, 120); margin-bottom:4px;">
-    {{job['title']}}</h4>
-  <div>
-    <b>Location:</b>{{job['location']}}
-  </div>
-  {% if 'salary' in job %}
-  <div>
-    <b>Salary:</b>{{job['salary']}}
-  </div>
-  {% endif %}
+<div class="job-item row align-items-center" style="margin-bottom: 16px; padding: 16px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: transform 0.3s;">
+    <div class="col-md-10">
+        <h4 style="color: #34495e; margin-bottom: 8px; font-weight: 600;">
+            {{ job['title'] }}
+        </h4>
+        <div style="color: #7f8c8d; margin-bottom: 4px;">
+            <b>Location:</b> {{ job['location'] }}
+        </div>
+        {% if 'salary' in job %}
+        <div style="color: #7f8c8d;">
+            <b>Salary:</b> {{ job['salary'] }}
+        </div>
+        {% endif %}
+    </div>
+    <div class="col-md-2 text-md-end text-start mt-3 mt-md-0">
+        <a href="/job/{{ job['id'] }}" type="button" class="btn btn-apply" style="transition: background-color 0.3s, color 0.3s;">
+            Apply
+        </a>
+    </div>
 </div>
-  <div class="col-2">
-    <a href="/job/{{job['id']}}" type="button" class="btn btn-outline-dark">Apply</a>
-  </div>
-  
-</div>
+
+<!-- Hover effects -->
+<style>
+    .job-item:hover {
+        transform: scale(1.02);
+    }
+    .btn-apply {
+        background: linear-gradient(135deg, #8a8a8a, #6d6e71); /* Metallic Chic Gradient */
+        color: #ffffff;
+        font-weight: 600;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+    }
+    .btn-apply:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        background: linear-gradient(135deg, #6d6e71, #8a8a8a); /* Reverse Gradient on Hover */
+    }
+</style>

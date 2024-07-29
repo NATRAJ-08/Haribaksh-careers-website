@@ -1,31 +1,95 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>{{job.title}} - Harubaksh Careers </title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ job.title }} - Haribaksh Careers</title>
     {% include 'bootstrap.html' %}
-  </head>
-  <body>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(to right, #34495e, #2c3e50);
+            color: #ecf0f1;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            color: #34495e;
+        }
+        h1, h3, h4 {
+            color: #bdc3c7;
+        }
+        .lead {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            color: #555;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        .btn-apply {
+            background-color: #bdc3c7;
+            color: #34495e;
+            border-radius: 50px;
+            padding: 12px 24px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .btn-apply:hover {
+            background-color: #ecf0f1;
+            color: #34495e;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            color: #bdc3c7;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+            font-weight: 700;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 5px;
+            background: #bdc3c7;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
     {% include 'nav.html' %}
-    {% include 'banner.html'%}
-    <div class= "container">
-       <h1 class="text-center mt-2 mb-4"> Haribaksh careers</h1>
-    <h3 class="mb-2">{{job.title}}</h3>
-    <p class="lead mt-0">{{job.location}}</p>
-    <h4>Responsibilities</h4>
-      <ul>
-        {% for line in job.responsibilities.split("\n") %}
-        <li>{{line}}</li>
-        {% endfor %}
-      </ul>
-      <h4>Requirements</h4>
-    <p>{{job.requirements}}</p>
-      <h4>Salary</h4>
-      <p>{{job.currency}}{{job.salary}}</p>
-   
-  
-    {% include 'application_form.html' %}
-    
-      </div>
-     {% include 'footer.html' %}
-  </body>
+    {% include 'banner.html' %}
+    <div class="container">
+        <h1 class="text-center mt-2 mb-4 section-title">Haribaksh Careers</h1>
+        <h3 class="mb-2">{{ job.title }}</h3>
+        <p class="lead mt-0">{{ job.location }}</p>
+        <h4>Responsibilities</h4>
+        <ul>
+            {% for line in job.responsibilities.split("\n") %}
+            <li>{{ line }}</li>
+            {% endfor %}
+        </ul>
+        <h4>Requirements</h4>
+        <p>{{ job.requirements }}</p>
+        <h4>Salary</h4>
+        <p>{{ job.currency }}{{ job.salary }}</p>
+        <div class="text-center mt-4">
+            
+        </div>
+        {% include 'application_form.html' %}
+    </div>
+    {% include 'footer.html' %}
+</body>
 </html>
