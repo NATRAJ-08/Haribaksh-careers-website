@@ -5,31 +5,195 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     {% include 'bootstrap.html' %}
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1c1c1e, #2a2a2e); /* Gradient background */
+            color: #f0f0f0; /* Light color for contrast */
+            font-family: 'Roboto', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+        }
+        .container {
+            background-color: #2c2c2e;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+        .text-center {
+            color: #e0e0e0;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        .form-group label {
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        .form-group .icon {
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+        }
+        .form-control {
+            background-color: #3c3c3e;
+            border: none;
+            color: #f0f0f0;
+            border-radius: 8px;
+            padding: 0.75rem;
+            font-size: 1rem;
+        }
+        .form-control:focus {
+            background-color: #3c3c3e;
+            color: #f0f0f0;
+            box-shadow: none;
+            border: 1px solid #b0b0b0;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #5a5a5c, #727274);
+            border: none;
+            transition: background 0.3s, transform 0.3s;
+            padding: 0.75rem;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 8px;
+            width: 100%;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #727274, #5a5a5c);
+            transform: scale(1.05);
+        }
+        a {
+            color: #b0b0b0;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #d0d0d0;
+            text-decoration: underline;
+        }
+        .alert {
+            color: #f0f0f0;
+            background-color: #5a5a5c;
+            border: none;
+            margin-top: 1rem;
+            padding: 0.75rem;
+            border-radius: 8px;
+        }
+        .password-toggle {
+            display: flex;
+            align-items: center;
+            margin-top: 0.5rem;
+            justify-content: flex-start;
+        }
+        .password-toggle input[type="checkbox"] {
+            display: none;
+        }
+        .password-toggle .custom-checkbox {
+            position: relative;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #3c3c3e;
+            border: 2px solid #b0b0b0;
+            transition: background-color 0.3s, border-color 0.3s;
+            margin-right: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .password-toggle .custom-checkbox::before {
+            content: '';
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: transparent;
+            display: block;
+            transition: background-color 0.3s;
+        }
+        .password-toggle input[type="checkbox"]:checked + .custom-checkbox {
+            background-color: #5a5a5c;
+            border-color: #5a5a5c;
+        }
+        .password-toggle input[type="checkbox"]:checked + .custom-checkbox::before {
+            background-color: #f0f0f0;
+        }
+        .password-toggle .icon {
+            font-size: 1.2rem;
+            color: #f0f0f0;
+            display: none;
+        }
+        .password-toggle input[type="checkbox"]:checked + .custom-checkbox .icon {
+            display: block;
+        }
+        .password-toggle label {
+            cursor: pointer;
+            color: #b0b0b0;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+        .password-toggle label span.icon {
+            margin-left: 0.5rem;
+        }
+    </style>
 </head>
 <body>
     {% include 'nav.html' %}
-    <div class="container mt-5">
+    <div class="container">
         <h2 class="text-center">Login</h2>
         <form action="/login" method="POST">
             <div class="form-group">
-                <label for="username">Username</label>
+                <label for="username">
+                    <span class="icon">👤</span> Username
+                </label>
                 <input type="text" id="username" name="username" class="form-control" required>
             </div>
-            <div class="form-group mt-3">
-                <label for="password">Password</label>
+            <div class="form-group">
+                <label for="password">
+                    <span class="icon">🔒</span> Password
+                </label>
                 <input type="password" id="password" name="password" class="form-control" required>
+                <div class="password-toggle">
+                    <input type="checkbox" id="showPassword">
+                    <label for="showPassword" class="custom-checkbox">
+                        <span class="icon">👁️</span>
+                    </label>
+                    <label for="showPassword">Show</label>
+                </div>
             </div>
-            <button type="submit" class="btn btn-primary mt-3">Login</button>
+            <button type="submit" class="btn btn-primary mt-4">Login</button>
             <p class="mt-3">Don't have an account? <a href="/register">Register here</a></p>
         </form>
         {% with messages = get_flashed_messages(with_categories=True) %}
             {% if messages %}
-                <div class="alert alert-{{ messages[0][0] }} mt-3">
+                <div class="alert alert-{{ messages[0][0] }}">
                     {{ messages[0][1] }}
                 </div>
             {% endif %}
         {% endwith %}
     </div>
     {% include 'footer.html' %}
+    <script>
+        document.getElementById('showPassword').addEventListener('change', function() {
+            var passwordField = document.getElementById('password');
+            if (this.checked) {
+                passwordField.type = 'text';
+            } else {
+                passwordField.type = 'password';
+            }
+        });
+    </script>
 </body>
 </html>
